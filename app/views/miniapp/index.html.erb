@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col s12">
+    <div class="row">
+      <div class="input-field col s8">
+        <i class="material-icons prefix"></i>
+        <input type="text" id="autocomplete-input" class="autocomplete">
+        <label for="autocomplete-input">Autocomplete</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>Hello World</h1>
+
+
+<div class="contents">
+  <% @blogs.each do |blog| %>
+    <div class="message clearfix">
+      <div class="message_box">
+        <p class="user_name">
+          <%= blog.user %>
+        </p>
+        <p class="text">
+          <%= blog.blog_text %>
+        </p>
+        <% if user_signed_in? && current_user.id == blog.user_id %>
+          <a class="waves-effect waves-light btn" <%= link_to '削除', "/miniapp/#{blog.id}", method: :delete %></a>
+          <a class="waves-effect waves-light btn" <%= link_to '編集', "/miniapp/#{blog.id}/edit", method: :get %></a>
+        <% end %>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+      </div>
+    </div>
+  <% end %>
+</div>
+

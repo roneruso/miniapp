@@ -7,7 +7,50 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+  <style type="text/css" href="./style.css"></style>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- <script type="text/javascript" src="./app.js"></script> -->
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
   </head>
+
+ <nav class="#5c6bc0 indigo lighten-1">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Blog</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+        <% if user_signed_in? %>
+          <!-- <li><a href="badges.html">SignOut</a></li> -->
+          <li class="entry_button" style="float: right">
+            <%= link_to 'サインアウト', destroy_user_session_path, method: :delete %>
+          </li>
+          <li><a href="/miniapp/new.html">投稿</a></li>
+
+        <% else %>
+          <li class="entry_button" style="float: right">
+            <%= link_to '新規登録', new_user_registration_path, class: 'post' %>
+          </li>
+
+          <!-- <li><a href="sass.html">SignIn</a></li> -->
+          <li class="entry_button" style="float: right">
+            <%= link_to 'ログイン', new_user_session_path, class: 'post' %>
+          </li>
+
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+
 
   <body>
     <%= yield %>
